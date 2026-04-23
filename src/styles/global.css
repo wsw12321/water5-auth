@@ -1,0 +1,9 @@
+/* src/styles/global.css */
+@import "tailwindcss"; /* 这是 v4 的核心魔法 */
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background-color: #f9fafb;
+}
