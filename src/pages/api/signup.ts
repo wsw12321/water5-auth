@@ -3,10 +3,10 @@ import { createAuthClient } from '../../lib/supabase';
 
 export const POST: APIRoute = async ({ request, cookies }) => {
   try {
-    const { email, password, redirectTo } = await request.json();
+    const { email, password } = await request.json();
     const supabase = createAuthClient(cookies, request);
     
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
+    const { error } = await supabase.auth.signUp({ email, password });
 
     if (error) {
       return new Response(JSON.stringify({ error: error.message }), { 
@@ -15,12 +15,12 @@ export const POST: APIRoute = async ({ request, cookies }) => {
       });
     }
 
-    return new Response(JSON.stringify({ url: redirectTo }), { 
+    return new Response(JSON.stringify({ message: 'Success' }), { 
       status: 200,
       headers: { 'Content-Type': 'application/json' }
     });
   } catch (err: any) {
-    return new Response(JSON.stringify({ error: err.message || '内部服务错误' }), { 
+    return new Response(JSON.stringify({ error: err.message || '注册服务不可用' }), { 
       status: 500,
       headers: { 'Content-Type': 'application/json' }
     });
