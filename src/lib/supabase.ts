@@ -20,7 +20,7 @@ export const createAuthClient = (cookies: AstroCookies, request: Request) => {
               domain: '.wsw.wiki',
               path: '/',
               secure: true,
-              httpOnly: true,
+            //   httpOnly: true,
               sameSite: 'lax',
             } as any) 
           })
