@@ -1,0 +1,41 @@
+---
+// 复用高级布局
+import AuthLayout from '../layouts/AuthLayout.astro';
+---
+
+<AuthLayout title="验证成功 - 水世界通行证">
+    <main class="min-h-screen w-full flex items-center justify-center p-4 sm:p-6">
+        
+        <div class="max-w-md w-full bg-white rounded-2xl shadow-xl p-8 text-center border border-gray-100">
+            
+            <div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-green-100 mb-6">
+                <svg class="h-10 w-10 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+            </div>
+
+            <h2 class="text-2xl font-bold text-gray-900 mb-2">验证成功！</h2>
+            <p class="text-gray-500 mb-8">您的“水世界通行证”已激活，现在可以返回登录界面进行登录了。</p>
+
+            <!-- <a href="/login" class="inline-flex items-center justify-center w-full px-4 py-3 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-lg shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors">
+                立即返回登录
+            </a> -->
+            <a class="inline-flex items-center justify-center w-full px-4 py-3 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-lg shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors">
+                确定
+            </a>
+            
+        </div>
+    </main>
+
+    <script>
+        // 当页面在浏览器中加载完成后执行
+        window.addEventListener('DOMContentLoaded', () => {
+            // Supabase 邮件重定向时，经常会在 URL 后带有庞大的 Token 参数（如 #access_token=...）
+            // 我们在视觉渲染完成后，悄悄把地址栏清理干净，给用户最纯净的极客体验
+            if (window.location.hash.includes('access_token') || window.location.hash.includes('error')) {
+                // 使用 replaceState 替换当前 URL，不会触发页面刷新
+                window.history.replaceState(null, document.title, window.location.pathname);
+            }
+        });
+    </script>
+</AuthLayout>
