@@ -3,6 +3,8 @@ import { useState } from 'react';
 export default function AuthForm({ redirectTo }: { redirectTo: string }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [loadingMode, setLoadingMode] = useState<'signin' | 'signup' | null>(null);
   const [message, setMessage] = useState({ text: '', type: '' });
 
@@ -62,16 +64,43 @@ export default function AuthForm({ redirectTo }: { redirectTo: string }) {
           />
         </div>
 
+        {showConfirmPassword && (
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-1.5 ml-0.5">确认密码</label>
+            <input 
+              type="password" 
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 focus:bg-white outline-none transition-all text-gray-800 placeholder-gray-400"
+              placeholder="••••••••"
+            />
+          </div>
+        )}
+
         <div className="grid grid-cols-2 gap-4 pt-2">
           <button 
-            onClick={() => handleAction('signin')}
+            onClick={() => {
+              setShowConfirmPassword(false);
+              handleAction('signin');
+            }}
             disabled={loadingMode !== null}
             className="w-full bg-blue-600 text-white font-bold py-3.5 rounded-xl hover:bg-blue-700 active:scale-95 transition-all disabled:opacity-50 shadow-md shadow-blue-100"
           >
             {loadingMode === 'signin' ? '处理中...' : '登录'}
           </button>
           <button 
-            onClick={() => handleAction('signup')}
+            onClick={() => {
+              if (!showConfirmPassword) {
+                setShowConfirmPassword(true);
+                setMessage({ text: '⚠️ 请在下方输入框重复密码以确认', type: 'error' });
+                return;
+              }
+              if (password !== confirmPassword) {
+                setMessage({ text: '❌ 两次输入的密码不一致', type: 'error' });
+                return;
+              }
+              handleAction('signup');
+            }}
             disabled={loadingMode !== null}
             className="w-full bg-gray-900 text-white font-bold py-3.5 rounded-xl hover:bg-black active:scale-95 transition-all disabled:opacity-50 shadow-md"
           >
