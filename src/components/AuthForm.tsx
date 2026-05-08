@@ -62,6 +62,13 @@ export default function AuthForm({ redirectTo }: { redirectTo: string }) {
             className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 focus:bg-white outline-none transition-all text-gray-800 placeholder-gray-400"
             placeholder="••••••••"
           />
+          {!showConfirmPassword && (
+            <div className="text-right mt-2">
+              <a href="/forgot-password" className="text-xs font-medium text-blue-600 hover:text-blue-800 transition-colors">
+                忘记密码？
+              </a>
+            </div>
+          )}
         </div>
 
         {showConfirmPassword && (
