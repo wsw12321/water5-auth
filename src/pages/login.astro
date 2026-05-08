@@ -1,13 +1,16 @@
 ---
-import AuthLayout from '../layouts/AuthLayout.astro';
-import AuthForm from '../components/AuthForm';
+import AuthLayout from "../layouts/AuthLayout.astro";
+import AuthForm from "../components/AuthForm";
 
 // 获取主站重定向地址
-const redirectTo = Astro.url.searchParams.get('redirect_to') || 'https://prompt.wsw.wiki';
+const redirectTo =
+	Astro.url.searchParams.get("redirect_to") || "https://auth.wsw.wiki";
 ---
 
 <AuthLayout title="登录 - 水世界通行证">
-    <main class="min-h-screen w-full flex items-center justify-center p-4 sm:p-6">
+	<main
+		class="min-h-screen w-full flex items-center justify-center p-4 sm:p-6"
+	>
 		<AuthForm client:load redirectTo={redirectTo} />
 	</main>
 </AuthLayout>
