@@ -1,7 +1,16 @@
 ---
-// src/pages/index.astro
-// 水世界通行证 (Auth 站) 根路由枢纽
+import AuthLayout from '../layouts/AuthLayout.astro';
+import HomeDashboard from '../components/HomeDashboard';
+import { createAuthClient } from '../lib/supabase';
 
-// MVP 阶段：不在根目录展示任何营销内容，直接在服务端拦截并重定向到登录页
-return Astro.redirect('/login');
+const supabase = createAuthClient(Astro.cookies, Astro.request);
+const { data: { user } } = await supabase.auth.getUser();
+
+const email = user?.email || null;
 ---
+
+<AuthLayout title="控制台 - 水世界通行证">
+    <main class="min-h-screen w-full flex items-center justify-center p-4 sm:p-6">
+		<HomeDashboard client:load email={email} />
+	</main>
+</AuthLayout>
