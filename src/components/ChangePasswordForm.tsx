@@ -101,7 +101,7 @@ export default function ChangePasswordForm({ email }: { email?: string | null })
         
         {message.type === 'success' && (
           <div className="text-center mt-4">
-            <a href="https://prompt.wsw.wiki" className="text-sm font-medium text-blue-600 hover:text-blue-800 transition-colors">
+            <a href="/" className="text-sm font-medium text-blue-600 hover:text-blue-800 transition-colors">
               返回主站
             </a>
           </div>
