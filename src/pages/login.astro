@@ -1,10 +1,10 @@
 ---
 import AuthLayout from "../layouts/AuthLayout.astro";
 import AuthForm from "../components/AuthForm";
+import { getAuthUrl, resolveSafeRedirectUrl } from "../lib/config";
 
-// 获取主站重定向地址
 const redirectTo =
-	Astro.url.searchParams.get("redirect_to") || "https://auth.wsw.wiki";
+	resolveSafeRedirectUrl(Astro.url.searchParams.get("redirect_to")) || getAuthUrl();
 ---
 
 <AuthLayout title="登录 - 水世界通行证">

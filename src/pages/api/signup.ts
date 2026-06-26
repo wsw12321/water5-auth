@@ -1,4 +1,5 @@
 import type { APIRoute } from 'astro';
+import { getAuthUrl } from '../../lib/config';
 import { createAuthClient } from '../../lib/supabase';
 
 export const POST: APIRoute = async ({ request, cookies }) => {
@@ -6,7 +7,13 @@ export const POST: APIRoute = async ({ request, cookies }) => {
     const { email, password } = await request.json();
     const supabase = createAuthClient(cookies, request);
     
-    const { error } = await supabase.auth.signUp({ email, password });
+    const { error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        emailRedirectTo: new URL('/success', getAuthUrl()).toString(),
+      },
+    });
 
     if (error) {
       return new Response(JSON.stringify({ error: error.message }), { 

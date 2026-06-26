@@ -90,7 +90,7 @@ export default function HomeDashboard({ email }: { email?: string | null }) {
         <h2 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4 px-1">旗下服务</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           <a 
-            href="https://ai.wsw.wiki" 
+            href="https://ai.water555.com" 
             target="_blank" 
             rel="noopener noreferrer"
             className="group bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-gray-200 hover:shadow-lg hover:border-blue-200 hover:-translate-y-1 transition-all flex flex-col items-center justify-center text-center h-full min-h-[200px]"
