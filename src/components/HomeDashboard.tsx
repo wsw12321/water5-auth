@@ -90,7 +90,7 @@ export default function HomeDashboard({ email }: { email?: string | null }) {
         <h2 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4 px-1">旗下服务</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           <a 
-            href="https://ai.water555.com" 
+            href="https://ai.wsw.wiki" 
             target="_blank" 
             rel="noopener noreferrer"
             className="group bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-gray-200 hover:shadow-lg hover:border-blue-200 hover:-translate-y-1 transition-all flex flex-col items-center justify-center text-center h-full min-h-[200px]"
@@ -106,7 +106,26 @@ export default function HomeDashboard({ email }: { email?: string | null }) {
             </div>
           </a>
           
-          {/* 这里预留了第二个应用卡片的位置 */}
+          <a
+            href="https://yantao.water555.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-gray-200 hover:shadow-lg hover:border-emerald-200 hover:-translate-y-1 transition-all flex flex-col items-center justify-center text-center h-full min-h-[200px]"
+          >
+            <div className="w-16 h-16 rounded-2xl bg-emerald-50 flex items-center justify-center text-emerald-500 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300 shadow-sm mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <circle cx="12" cy="12" r="1" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M20.2 20.2c2.04-2.03.02-7.36-4.5-11.9-4.54-4.52-9.87-6.54-11.9-4.5-2.04 2.03-.02 7.36 4.5 11.9 4.54 4.52 9.87 6.54 11.9 4.5Z" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15.7 15.7c4.52-4.54 6.54-9.87 4.5-11.9-2.03-2.04-7.36-.02-11.9 4.5-4.52 4.54-6.54 9.87-4.5 11.9 2.03 2.04 7.36.02 11.9-4.5Z" />
+              </svg>
+            </div>
+            <div>
+              <h3 className="text-gray-900 font-bold text-lg group-hover:text-emerald-600 transition-colors">研讨物理社</h3>
+              <p className="text-gray-500 text-sm mt-2 leading-relaxed">面向热爱物理的学生，记录社课、成员与社团文化。</p>
+            </div>
+          </a>
+
+          {/* 这里预留了后续应用卡片的位置 */}
           <div className="bg-gray-50/50 p-6 sm:p-8 rounded-2xl border-2 border-gray-200 border-dashed flex flex-col items-center justify-center text-center text-gray-400 opacity-80 h-full min-h-[200px]">
             <div className="w-12 h-12 rounded-full border-2 border-gray-300 border-dashed flex items-center justify-center text-gray-300 mb-3">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
