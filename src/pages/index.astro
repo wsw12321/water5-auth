@@ -1,11 +1,9 @@
 ---
 import AuthLayout from '../layouts/AuthLayout.astro';
 import HomeDashboard from '../components/HomeDashboard';
-import { createAuthClient } from '../lib/supabase';
+import { getCurrentAuthUser } from '../lib/supabase';
 
-const supabase = createAuthClient(Astro.cookies, Astro.request);
-const { data: { user } } = await supabase.auth.getUser();
-
+const user = await getCurrentAuthUser(Astro.cookies, Astro.request);
 const email = user?.email || null;
 ---
 
